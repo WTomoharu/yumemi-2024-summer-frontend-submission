@@ -7,4 +7,7 @@ export default defineConfig({
   build: {
     target: "esnext",
   },
+  base: process.env.REPOSITORY_NAME
+    ? `/${process.env.REPOSITORY_NAME}`
+    : undefined,
 })
