@@ -7,6 +7,8 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
+    "test": "vitest",
+    "test:ci": "vitest run",
     "lint": "eslint src test",
     "format": "prettier src test --write"
   },
