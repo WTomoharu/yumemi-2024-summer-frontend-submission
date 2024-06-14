@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Chart } from "highcharts-vue"
-import { PopulationType, populations } from "../store/population"
 import { computed, ref } from "vue"
+import { Chart } from "highcharts-vue"
 import { prefectures } from "../store/prefecture"
+import { populations, PopulationType } from "../store/population"
 
 const populationType = ref<PopulationType>("総人口")
 
