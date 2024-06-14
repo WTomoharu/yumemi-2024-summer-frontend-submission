@@ -2,7 +2,8 @@
 import { computed, ref } from "vue"
 import { Chart } from "highcharts-vue"
 import { prefectures } from "../store/prefecture"
-import { populations, PopulationType } from "../store/population"
+import { populations } from "../store/population"
+import { PopulationType } from "../lib/population"
 
 const populationType = ref<PopulationType>("総人口")
 

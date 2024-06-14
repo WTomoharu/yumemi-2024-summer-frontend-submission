@@ -1,11 +1,5 @@
 import { ref } from "vue"
-import { api } from "../lib/api"
+import { Prefecture, fetchPrefectures } from "../lib/prefecture"
 
-export type Prefecture = {
-  prefCode: number
-  prefName: string
-}
-
-const res = await api.get("api/v1/prefectures")
-
-export const prefectures = ref<Prefecture[]>(res.data.result)
+const data = await fetchPrefectures()
+export const prefectures = ref<Prefecture[]>(data)
