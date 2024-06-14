@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { Chart } from "highcharts-vue"
-import { populations } from "../store/population"
-import { computed } from "vue"
+import { PopulationType, populations } from "../store/population"
+import { computed, ref } from "vue"
 import { prefectures } from "../store/prefecture"
+
+const populationType = ref<PopulationType>("総人口")
 
 const hogeChartOptions = computed<Highcharts.Options>(() => ({
   title: {
@@ -36,22 +38,31 @@ const hogeChartOptions = computed<Highcharts.Options>(() => ({
     const prefecture = prefectures.value.find(
       (prefecture) => prefecture.prefCode === population.prefCode,
     )!
+
+    const data = population.data.find(
+      (data) => data.label === populationType.value,
+    )!.data
+
     return {
       name: prefecture.prefName.toString(),
       type: "line",
-      data: population.data[0].data.map((e) => [e.year, e.value]),
+      data: data.map((e) => [e.year, e.value]),
     }
   }),
 }))
 </script>
 
 <template>
-  <section class="chart-section">
-    <Chart
-      class="chart"
-      v-show="0 < populations.length"
-      :options="hogeChartOptions"
-    />
+  <section class="chart-section" v-show="0 < populations.length">
+    <div class="chart-menu">
+      <select v-model="populationType">
+        <option value="総人口">総人口のグラフ</option>
+        <option value="年少人口">年少人口のグラフ</option>
+        <option value="生産年齢人口">生産年齢人口のグラフ</option>
+        <option value="老年人口">老年人口のグラフ</option>
+      </select>
+    </div>
+    <Chart class="chart" :options="hogeChartOptions" />
   </section>
 </template>
 
@@ -60,6 +71,15 @@ const hogeChartOptions = computed<Highcharts.Options>(() => ({
   overflow: hidden;
   margin: 0 auto;
   max-width: 750px;
+}
+.chart-menu {
+  text-align: center;
+  margin: 8px 0;
+}
+.chart-menu select {
+  font-size: 1.3em;
+  text-align: center;
+  padding: 6px;
 }
 .chart {
   margin-left: -8px;
