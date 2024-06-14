@@ -35,6 +35,9 @@ jobs:
       - name: Install NPM packages (use Yarn)
         run: yarn install --frozen-lockfile
       
+      - name: Echo repo name
+        run: echo ${{ github.event.repository.name }}
+
       - name: Create env file
         run: |
           touch .env
