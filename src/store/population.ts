@@ -17,10 +17,6 @@ export type Population = {
 
 export const populations = ref<Population[]>([])
 
-export const getPopulation = (prefCode: number) => {
-  return populations.value.find((item) => item.prefCode == prefCode)
-}
-
 export const addPopulation = async (prefCode: number) => {
   const res = await api.get("/api/v1/population/composition/perYear", {
     params: {

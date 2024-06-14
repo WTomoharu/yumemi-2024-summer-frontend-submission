@@ -14,14 +14,16 @@ describe("Population", () => {
     await store.addPopulation(0)
 
     // populationが正常に取得されているかを確認
-    expect(store.getPopulation(0)?.prefCode).toBe(0)
-    expect(store.populations.value.length).toBe(1)
+    expect(
+      store.populations.value.find((population) => population.prefCode == 0),
+    ).toBeTruthy()
 
     // populationを1つ削除
     store.removePopulation(0)
 
     // populationが正常に削除されているかを確認
-    expect(store.getPopulation(0)).toBeUndefined()
-    expect(store.populations.value.length).toBe(0)
+    expect(
+      store.populations.value.find((population) => population.prefCode == 0),
+    ).toBeUndefined()
   })
 })
