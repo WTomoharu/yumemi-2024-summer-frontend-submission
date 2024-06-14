@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import { api } from "../lib/api"
-
-type Prefecture = {
-  prefCode: number
-  prefName: string
-}
-
-const res = await api.get("api/v1/prefectures")
-const prefectures: Prefecture[] = res.data.result
+import { prefectures } from "../store/prefecture"
 </script>
 
 <template>
