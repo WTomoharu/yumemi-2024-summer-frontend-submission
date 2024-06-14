@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PrefectureGraph from "./components/prefecture-graph.vue"
+import PrefectureChart from "./components/prefecture-chart.vue"
 import PrefectureTable from "./components/prefecture-table.vue"
 </script>
 
@@ -9,7 +9,7 @@ import PrefectureTable from "./components/prefecture-table.vue"
     <PrefectureTable />
   </Suspense>
   <Suspense>
-    <PrefectureGraph />
+    <PrefectureChart />
   </Suspense>
 </template>
 
