@@ -6,7 +6,7 @@ describe("Population", () => {
 
     // モジュールを読み込めているかを確認
     expect(store).toBeTypeOf("object")
-    
+
     // populationsが0で初期化されているかを確認
     expect(store.populations.value.length).toBe(0)
 

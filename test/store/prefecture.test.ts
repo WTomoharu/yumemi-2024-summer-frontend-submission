@@ -6,7 +6,7 @@ describe("Prefecture", () => {
 
     // モジュールを読み込めているかを確認
     expect(store).toBeTypeOf("object")
-    
+
     // 認証ありのトップページで200番が返ってくるか確認
     expect(store.prefectures.value.length).toBe(47)
   })
