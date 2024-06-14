@@ -23,9 +23,12 @@ const onChangeCheckbox = async (e: Event, prefCode: number) => {
       >
         <input
           type="checkbox"
+          :id="`${prefecture.prefCode}-checkbox`"
           @change="(e) => onChangeCheckbox(e, prefecture.prefCode)"
         />
-        {{ prefecture.prefName }}
+        <label :for="`${prefecture.prefCode}-checkbox`">
+          {{ prefecture.prefName }}
+        </label>
       </div>
     </div>
   </section>
