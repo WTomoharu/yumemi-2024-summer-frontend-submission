@@ -34,9 +34,6 @@ jobs:
 
       - name: Install NPM packages (use Yarn)
         run: yarn install --frozen-lockfile
-      
-      - name: Echo repo name
-        run: echo ${{ github.event.repository.name }}
 
       - name: Create env file
         run: |
@@ -50,7 +47,7 @@ jobs:
         run: yarn run build
         env:
           NODE_ENV: production
-          REPOSITORY_NAME: ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
+          REPOSITORY_NAME: ${{ github.event.repository.name }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
