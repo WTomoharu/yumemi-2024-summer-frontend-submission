@@ -14,20 +14,42 @@ const onChangeCheckbox = async (e: Event, prefCode: number) => {
 </script>
 
 <template>
-  <div class="grid">
-    <div v-for="prefecture in prefectures" :key="prefecture.prefCode">
-      <input
-        type="checkbox"
-        @change="(e) => onChangeCheckbox(e, prefecture.prefCode)"
-      />
-      {{ prefecture.prefName }}
+  <section class="table-section">
+    <div class="table">
+      <div
+        v-for="prefecture in prefectures"
+        :key="prefecture.prefCode"
+        class="table-cell"
+      >
+        <input
+          type="checkbox"
+          @change="(e) => onChangeCheckbox(e, prefecture.prefCode)"
+        />
+        {{ prefecture.prefName }}
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>
-.grid {
+.table-section {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.table {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+}
+
+.table-cell {
+  padding: 0 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .table {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 </style>
