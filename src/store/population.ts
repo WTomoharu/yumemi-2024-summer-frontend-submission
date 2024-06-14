@@ -1,11 +1,13 @@
 import { api } from "../lib/api"
 import { ref } from "vue"
 
-type Population = {
+export type PopulationType = "総人口" | "年少人口" | "生産年齢人口" | "老年人口"
+
+export type Population = {
   prefCode: number
   boundaryYear: string
   data: {
-    label: number
+    label: PopulationType
     data: {
       year: number
       value: number

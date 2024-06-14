@@ -1,7 +1,7 @@
 import { ref } from "vue"
 import { api } from "../lib/api"
 
-type Prefecture = {
+export type Prefecture = {
   prefCode: number
   prefName: string
 }
